@@ -1,0 +1,69 @@
+[
+  {
+    "type": "function",
+    "name": "lookup_error_code",
+    "description": "給湯器のエラーコードから、症状名・想定原因・自己解決の可否を調べる。エラーコードが判明している場合に必ず呼び出すこと。コードを記憶や推測で答えてはいけない。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "リモコンやパネルに表示されているエラーコード。例: 'AS-03'。相手の発音をそのまま渡してよい。"
+        }
+      },
+      "required": ["code"]
+    }
+  },
+  {
+    "type": "function",
+    "name": "check_availability",
+    "description": "訪問先の区名（東京23区）と希望時期から、訪問可能な空き枠を照会する。訪問日程を口にする前に必ず呼び出すこと。営業エリア（東京23区内）かどうかの判定もこのツールが行うので、区名を聞いたら必ず呼び出すこと。空いていない日時を提案してはいけない。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "area": {
+          "type": "string",
+          "description": "訪問先の区名（東京23区のいずれか）。相手が言った区名をそのまま渡す。例: '渋谷区'。'区'が省略されて言われた場合もそのまま渡してよい（例: '渋谷'）。"
+        },
+        "date_range": {
+          "type": "string",
+          "description": "希望時期。例: '今週中', '来週の平日', '8月22日以降' など、相手の発言をそのまま渡してよい。"
+        }
+      },
+      "required": ["area"]
+    }
+  },
+  {
+    "type": "function",
+    "name": "book_visit",
+    "description": "訪問修理を確定予約する。氏名・訪問枠が揃い、相手に復唱確認が済んでから呼び出すこと。住所は聞き取り不要（区名のみで足りる）。連絡先電話番号は発信者番号を既定で使うため、通常は聞き取り不要。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "予約者氏名" },
+        "slot_id": { "type": "string", "description": "check_availabilityで取得したslotId" },
+        "callback_phone": {
+          "type": "string",
+          "description": "折り返し先の電話番号。発信者番号が取得できている場合は省略してよく、その番号が自動で使われる。発信者番号が取得できていない場合(instructionsの「# 発信者番号」セクションで指示される)、および相手が『別の番号にしてほしい』と言った場合は、聞き取った番号を必ず渡すこと。"
+        },
+        "symptom_summary": { "type": "string", "description": "症状の要約(訪問担当者への申し送り用)" }
+      },
+      "required": ["name", "slot_id"]
+    }
+  },
+  {
+    "type": "function",
+    "name": "escalate_emergency",
+    "description": "ガス臭・煙・大量の水漏れなど、危険を示す発言があった場合に最優先で呼び出す。通常の予約フローより優先する。",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "string",
+          "description": "危険と判断した理由。例: 'ガス臭がすると発言', '本体から煙が出ていると発言'"
+        }
+      },
+      "required": ["reason"]
+    }
+  }
+]

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>あんしん給湯サービスセンター（デモ）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --cream: #FBF4EA;
+        --cream-deep: #F3E6D3;
+        --brown: #4A3527;
+        --brown-soft: #7A6553;
+        --ember: #E8734A;
+        --ember-deep: #D45F38;
+        --ember-soft: #FBE3D6;
+        --green: #6E8B5A;
+        --green-soft: #E8EEE1;
+        --line: #E7D9C6;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+        margin: 0;
+        font-family: "M PLUS Rounded 1c", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", -apple-system, BlinkMacSystemFont, sans-serif;
+        color: var(--brown);
+        background: var(--cream);
+        line-height: 1.7;
+    }
+
+    a { color: inherit; }
+
+    /* ---------- Header ---------- */
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        padding: 1.4rem 1rem 0.6rem;
+    }
+    .brand-mark {
+        width: 34px;
+        height: 34px;
+        flex: none;
+    }
+    .brand-name {
+        font-size: 1.05rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+        position: relative;
+        overflow: hidden;
+        padding: 2.2rem 1.5rem 2.8rem;
+        text-align: center;
+    }
+    .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 50% 0%, var(--ember-soft) 0%, transparent 62%);
+        pointer-events: none;
+    }
+    .hero-inner {
+        position: relative;
+        max-width: 460px;
+        margin: 0 auto;
+    }
+    .eyebrow {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: var(--ember-deep);
+        background: var(--ember-soft);
+        padding: 0.3rem 0.85rem;
+        border-radius: 999px;
+        margin-bottom: 1rem;
+    }
+    h1 {
+        font-size: 1.6rem;
+        line-height: 1.5;
+        margin: 0 0 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.01em;
+    }
+    h1 .accent { color: var(--ember-deep); }
+    .hero-lead {
+        color: var(--brown-soft);
+        font-size: 0.92rem;
+        margin: 0 0 2rem;
+    }
+
+    /* ---------- Call card ---------- */
+    .call-card {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 1.7rem 1.5rem 1.6rem;
+        box-shadow: 0 14px 32px -18px rgba(74, 53, 39, 0.35);
+    }
+    #status {
+        min-height: 1.4em;
+        font-size: 0.88rem;
+        color: var(--brown-soft);
+        margin: 0 0 1.1rem;
+    }
+    .call-actions {
+        display: flex;
+        gap: 0.7rem;
+        justify-content: center;
+    }
+    @media (max-width: 520px) {
+        .call-actions {
+            flex-direction: column;
+        }
+        #call-btn,
+        #hangup-btn {
+            flex: none;
+            width: 100%;
+        }
+    }
+    button {
+        font-family: inherit;
+        font-size: 0.98rem;
+        font-weight: 700;
+        padding: 0.85rem 1.4rem;
+        border-radius: 999px;
+        border: none;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+    }
+    button:disabled { opacity: 0.4; cursor: not-allowed; }
+    button:not(:disabled):active { transform: scale(0.97); }
+    #call-btn {
+        background: linear-gradient(135deg, var(--ember) 0%, var(--ember-deep) 100%);
+        color: #fff;
+        box-shadow: 0 10px 22px -10px rgba(212, 95, 56, 0.65);
+        flex: 1;
+    }
+    #hangup-btn {
+        background: var(--cream-deep);
+        color: var(--brown);
+        flex: none;
+    }
+    .mic-note {
+        margin: 1rem 0 0;
+        font-size: 0.76rem;
+        color: var(--brown-soft);
+    }
+
+    /* ---------- Divider ---------- */
+    .divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.4rem 0 0.2rem;
+        color: var(--brown-soft);
+        opacity: 0.6;
+    }
+    .divider svg { width: 20px; height: 20px; }
+
+    /* ---------- Features ---------- */
+    .features {
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 1.4rem 1.5rem 3rem;
+    }
+    .features h2 {
+        text-align: center;
+        font-size: 1.05rem;
+        font-weight: 800;
+        margin: 0 0 0.4rem;
+    }
+    .features-lead {
+        text-align: center;
+        color: var(--brown-soft);
+        font-size: 0.85rem;
+        margin: 0 0 1.8rem;
+    }
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.9rem;
+    }
+    @media (max-width: 520px) {
+        .feature-grid { grid-template-columns: 1fr; }
+    }
+    .feature-card {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 1.15rem 1.15rem 1.25rem;
+    }
+    .feature-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 11px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.7rem;
+        background: var(--green-soft);
+        color: var(--green);
+    }
+    .feature-card.warn .feature-icon {
+        background: var(--ember-soft);
+        color: var(--ember-deep);
+    }
+    .feature-icon svg { width: 20px; height: 20px; }
+    .feature-card h3 {
+        font-size: 0.92rem;
+        margin: 0 0 0.35rem;
+        font-weight: 700;
+    }
+    .feature-card p {
+        font-size: 0.8rem;
+        color: var(--brown-soft);
+        margin: 0;
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+        text-align: center;
+        padding: 1.6rem 1.5rem 2.4rem;
+        border-top: 1px solid var(--line);
+    }
+    footer p {
+        font-size: 0.74rem;
+        color: var(--brown-soft);
+        max-width: 460px;
+        margin: 0 auto 0.4rem;
+    }
+    footer .copyright {
+        font-size: 0.7rem;
+        opacity: 0.6;
+        margin-top: 0.8rem;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="20" fill="#E8734A"/>
+        <path d="M20 8c-4.5 5-7 9-7 12.5A7 7 0 0020 27.5a7 7 0 007-7C27 17 24.5 13 20 8z" fill="#FBF4EA"/>
+        <path d="M20 15c-2 2.6-3.2 4.6-3.2 6.3A3.2 3.2 0 0020 24.5a3.2 3.2 0 003.2-3.2c0-1.7-1.2-3.7-3.2-6.3z" fill="#E8734A"/>
+    </svg>
+    <span class="brand-name">あんしん給湯サービスセンター</span>
+</header>
+
+<section class="hero">
+    <div class="hero-inner">
+        <span class="eyebrow">音声AI窓口デモ</span>
+        <h1>今日も、<span class="accent">あたたかい</span>お湯を<br>あたりまえに。</h1>
+        <p class="hero-lead">給湯器のトラブルは、電話一本のあんしんへ。<br>AIがやさしく症状をお伺いします。</p>
+
+        <div class="call-card">
+            <p id="status">初期化しています…</p>
+            <div class="call-actions">
+                <button id="call-btn" disabled>電話をかける</button>
+                <button id="hangup-btn" disabled>終了</button>
+            </div>
+            <p class="mic-note">ブラウザから発信します。マイクの使用許可が求められます。</p>
+        </div>
+    </div>
+</section>
+
+<div class="divider" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 4c-3.2 3.6-5 6.4-5 8.8a5 5 0 1010 0c0-2.4-1.8-5.2-5-8.8z" stroke="currentColor" stroke-width="1.6"/>
+    </svg>
+</div>
+
+<section class="features">
+    <h2>このデモでできること</h2>
+    <p class="features-lead">実際の窓口対応を想定した、4つの場面を体験できます</p>
+
+    <div class="feature-grid">
+        <div class="feature-card">
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h16v12H8l-4 4V4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>症状を自然な会話で</h3>
+            <p>「お湯が出ない」「型番がわからない」といった、あいまいな伝え方でもAIが聞き取ります。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 8v5l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.8"/></svg>
+            </div>
+            <h3>エラーコードをその場で診断</h3>
+            <p>リモコンの表示を伝えるだけで、原因の見当と応急処置をご案内します。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="5" width="16" height="15" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M4 9h16M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <h3>訪問予約もそのまま</h3>
+            <p>空き状況を確認し、お名前だけでご予約完了。東京23区内で対応します。</p>
+        </div>
+        <div class="feature-card warn">
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4l9 16H3L12 4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 10v4M12 17h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <h3>緊急時は最優先で</h3>
+            <p>ガス臭・水漏れなど危険を感じる発言は、予約より先に安全案内へ切り替わります。</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>これは音声AI技術の検証を目的とした個人のポートフォリオデモです。実在の企業・サービスとは一切関係ありません。会話内容や個人情報は保存されません。</p>
+    <p class="copyright">gptlive-sts-demo</p>
+</footer>
+
+<script src="/bundle.js"></script>
+</body>
+</html>

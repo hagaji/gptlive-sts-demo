@@ -1,0 +1,8 @@
+.env
+node_modules/
+*.log
+server/public/bundle.js
+server/public/connecting.wav
+
+# 掲載用の原稿（note / Notion）。GitHubには上げない
+private/

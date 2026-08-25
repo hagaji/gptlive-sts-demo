@@ -1,0 +1,195 @@
+{
+  "note": "架空の給湯器メーカー『あんしん給湯サービスセンター』用のダミーデータ。実在メーカーのエラーコード体系とは無関係。selfResolutionGuidanceは『その場で解決を試みる案内』、interimGuidanceは『訪問予約が入った後、訪問までの待機案内』で用途が異なる。",
+  "errorCodes": [
+    {
+      "code": "AS-01",
+      "symptomName": "お湯が出ない(着火しない)",
+      "likelyCauses": [
+        "ガス栓が閉まっている",
+        "リモコンの電池切れ",
+        "ガスメーターの安全装置作動"
+      ],
+      "selfResolvable": true,
+      "selfResolutionGuidance": "ガス栓が開いているかご確認ください。ガスメーターの復帰ボタンを押して10分ほどお待ちいただくと復旧する場合があります。",
+      "visitRecommendedIfUnresolved": true,
+      "interimGuidance": "訪問まで、繰り返しの点火操作はお控えください。"
+    },
+    {
+      "code": "AS-02",
+      "symptomName": "お湯がぬるい・温度が安定しない",
+      "likelyCauses": [
+        "設定温度が低い",
+        "同時使用による湯量不足",
+        "水量センサーの不具合"
+      ],
+      "selfResolvable": true,
+      "selfResolutionGuidance": "リモコンの設定温度をご確認ください。他の場所で同時にお湯を使用していないかもご確認ください。",
+      "visitRecommendedIfUnresolved": true,
+      "interimGuidance": "訪問までは、ぬるくなることがありますが通常どおりお使いいただけます。"
+    },
+    {
+      "code": "AS-03",
+      "symptomName": "リモコン表示が消えている・反応しない",
+      "likelyCauses": [
+        "停電・ブレーカー断",
+        "リモコンの配線不良",
+        "本体基盤の不具合"
+      ],
+      "selfResolvable": true,
+      "selfResolutionGuidance": "ブレーカーが落ちていないかご確認ください。",
+      "visitRecommendedIfUnresolved": true,
+      "interimGuidance": "訪問まで、リモコンの操作はお控えください。"
+    },
+    {
+      "code": "AS-04",
+      "symptomName": "運転中に異音がする",
+      "likelyCauses": [
+        "ファンの異物混入",
+        "配管内の空気混入",
+        "経年劣化による部品摩耗"
+      ],
+      "selfResolvable": false,
+      "selfResolutionGuidance": null,
+      "visitRecommendedIfUnresolved": true,
+      "interimGuidance": "異音が続く場合は、訪問まで運転をお控えください。"
+    },
+    {
+      "code": "AS-05",
+      "symptomName": "本体から水が漏れている",
+      "likelyCauses": [
+        "配管の劣化",
+        "パッキンの劣化",
+        "凍結による破損"
+      ],
+      "selfResolvable": false,
+      "selfResolutionGuidance": null,
+      "visitRecommendedIfUnresolved": true,
+      "note": "水漏れ量が多い場合はescalate_emergencyの対象。軽微な滲み程度かを必ず確認すること。",
+      "interimGuidance": "訪問まで給湯器のご使用を中止し、可能であれば止水栓をお閉めください。"
+    },
+    {
+      "code": "AS-06",
+      "symptomName": "排気口・給気口の異常表示",
+      "likelyCauses": [
+        "排気口の閉塞(落ち葉・雪など)",
+        "換気不良",
+        "設置環境の変化"
+      ],
+      "selfResolvable": true,
+      "selfResolutionGuidance": "本体周辺や排気口の周りに物が置かれていないか、落ち葉などで塞がれていないかご確認ください。",
+      "visitRecommendedIfUnresolved": true,
+      "interimGuidance": "訪問まで、排気口の周りに物を置かないようにしてください。"
+    },
+    {
+      "code": "AS-07",
+      "symptomName": "凍結によるエラー(冬季)",
+      "likelyCauses": [
+        "低温による配管凍結"
+      ],
+      "selfResolvable": true,
+      "selfResolutionGuidance": "気温が上がるまでしばらくお待ちください。凍結防止のため、運転を止めずそのままにしておくことをお勧めします。",
+      "visitRecommendedIfUnresolved": true,
+      "interimGuidance": "凍結のおそれがあるため、訪問まで電源は入れたままにしてください。"
+    },
+    {
+      "code": "AS-08",
+      "symptomName": "フィルター詰まりによる能力低下",
+      "likelyCauses": [
+        "フィルターの目詰まり",
+        "経年による汚れの蓄積"
+      ],
+      "selfResolvable": false,
+      "selfResolutionGuidance": null,
+      "visitRecommendedIfUnresolved": true,
+      "interimGuidance": "訪問までお使いいただけますが、お湯の出が弱い状態が続きます。"
+    },
+    {
+      "code": "AS-09",
+      "symptomName": "電源が入らない",
+      "likelyCauses": [
+        "ブレーカー断",
+        "電源プラグの抜け",
+        "本体基盤の故障"
+      ],
+      "selfResolvable": true,
+      "selfResolutionGuidance": "ブレーカーと電源プラグの接続をご確認ください。",
+      "visitRecommendedIfUnresolved": true,
+      "interimGuidance": "訪問まで、ブレーカーの入切を繰り返さないでください。"
+    },
+    {
+      "code": "AS-99",
+      "symptomName": "原因不明・その他のエラー表示",
+      "likelyCauses": [
+        "特定できず、点検が必要"
+      ],
+      "selfResolvable": false,
+      "selfResolutionGuidance": null,
+      "visitRecommendedIfUnresolved": true,
+      "interimGuidance": "念のため、訪問まで給湯器のご使用はお控えください。"
+    }
+  ],
+  "symptomTriage": {
+    "description": "エラーコードが分からない客向けの、症状ベースの聞き取り分類。lookup_error_codeを呼ばずにこちらでヒアリングを進めてよい。",
+    "categories": [
+      {
+        "key": "no_hot_water",
+        "label": "お湯が全く出ない",
+        "clarifyingQuestions": [
+          "リモコンに数字やアルファベットの表示は出ていますか",
+          "ガス栓は開いていますか",
+          "他の蛇口でもお湯が出ませんか、それとも一箇所だけですか"
+        ],
+        "relatedCodes": [
+          "AS-01",
+          "AS-09"
+        ]
+      },
+      {
+        "key": "lukewarm",
+        "label": "お湯がぬるい・温度が不安定",
+        "clarifyingQuestions": [
+          "リモコンの設定温度は何度になっていますか",
+          "他の場所で同時にお湯を使っていませんか"
+        ],
+        "relatedCodes": [
+          "AS-02"
+        ]
+      },
+      {
+        "key": "display_issue",
+        "label": "リモコンの表示がおかしい・反応しない",
+        "clarifyingQuestions": [
+          "リモコンの画面は真っ暗ですか、それとも何か表示されていますか",
+          "ブレーカーは落ちていませんか"
+        ],
+        "relatedCodes": [
+          "AS-03",
+          "AS-09"
+        ]
+      },
+      {
+        "key": "noise",
+        "label": "異音がする",
+        "clarifyingQuestions": [
+          "音はお湯を使っている時だけですか、常に鳴っていますか",
+          "本体の外側からですか、それとも室内の給湯栓からですか"
+        ],
+        "relatedCodes": [
+          "AS-04"
+        ]
+      },
+      {
+        "key": "leak",
+        "label": "水漏れ",
+        "clarifyingQuestions": [
+          "水が漏れている量はどれくらいですか(ポタポタか、流れ出ているか)",
+          "床が水浸しになっていませんか"
+        ],
+        "relatedCodes": [
+          "AS-05"
+        ],
+        "note": "水量が多い・床が水浸し等の回答があればescalate_emergency対象"
+      }
+    ]
+  }
+}

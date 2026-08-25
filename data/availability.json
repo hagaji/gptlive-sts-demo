@@ -1,0 +1,20 @@
+{
+  "note": "ダミーの空き枠テンプレート。日付は固定値を持たず、check_availability呼び出し時の現在日付を基準にdayOffset(日数)を足して動的生成する。当日(dayOffset:0)は受付枠に含めない。ここでの areas は内部管理用の4方面区分。実際の営業エリアは東京23区内で、区名→この4方面へのマッピングは server/tools.js の WARD_TO_AREA が単一ソース（23区外・他都道府県の区名はどこにもマッチせず inServiceArea:false になる）。",
+  "areas": ["東エリア", "西エリア", "南エリア", "北エリア"],
+  "slotTemplates": [
+    { "templateId": "E1", "area": "東エリア", "dayOffset": 1, "timeRange": "09:00-11:00", "status": "available" },
+    { "templateId": "E2", "area": "東エリア", "dayOffset": 1, "timeRange": "13:00-15:00", "status": "available" },
+    { "templateId": "E3", "area": "東エリア", "dayOffset": 2, "timeRange": "10:00-12:00", "status": "booked" },
+    { "templateId": "E4", "area": "東エリア", "dayOffset": 5, "timeRange": "14:00-16:00", "status": "available" },
+    { "templateId": "W1", "area": "西エリア", "dayOffset": 1, "timeRange": "10:00-12:00", "status": "available" },
+    { "templateId": "W2", "area": "西エリア", "dayOffset": 2, "timeRange": "09:00-11:00", "status": "available" },
+    { "templateId": "W3", "area": "西エリア", "dayOffset": 4, "timeRange": "15:00-17:00", "status": "booked" },
+    { "templateId": "S1", "area": "南エリア", "dayOffset": 1, "timeRange": "13:00-15:00", "status": "available" },
+    { "templateId": "S2", "area": "南エリア", "dayOffset": 3, "timeRange": "09:00-11:00", "status": "available" },
+    { "templateId": "S3", "area": "南エリア", "dayOffset": 6, "timeRange": "10:00-12:00", "status": "available" },
+    { "templateId": "N1", "area": "北エリア", "dayOffset": 2, "timeRange": "13:00-15:00", "status": "available" },
+    { "templateId": "N2", "area": "北エリア", "dayOffset": 5, "timeRange": "09:00-11:00", "status": "available" },
+    { "templateId": "N3", "area": "北エリア", "dayOffset": 7, "timeRange": "14:00-16:00", "status": "available" }
+  ],
+  "implementationNote": "slotIdは生成時に `${templateId}-${YYYYMMDD}` の形で払い出す。statusが'booked'のものは意図的に混ぜてある(『空いていない日を提案しない』挙動の確認用)。book_visitで予約が入った枠は、プロセス内メモリでbookedに更新すれば足りる(永続化不要)。"
+}
